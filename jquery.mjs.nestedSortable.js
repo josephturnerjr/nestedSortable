@@ -60,7 +60,6 @@
 			if(this.options.scroll) {
 				var scrolled = false;
 				if(this.scrollParent[0] != document && this.scrollParent[0].tagName != 'HTML') {
-
 					if((this.overflowOffset.top + this.scrollParent[0].offsetHeight) - event.pageY < o.scrollSensitivity)
 						this.scrollParent[0].scrollTop = scrolled = this.scrollParent[0].scrollTop + o.scrollSpeed;
 					else if(event.pageY - this.overflowOffset.top < o.scrollSensitivity)
@@ -191,6 +190,9 @@
         }
         // Otherwise, add it to the bottom of the list.
         else {
+          // JAT there is a bug here.
+          // The helper disappears and the element is, if released,
+          //    appended to the bottommost child of the bottommost child
 				  previousItem.children(o.listType)[0].appendChild(this.placeholder[0]);
         }
 				this._trigger("change", event, this._uiHash());
